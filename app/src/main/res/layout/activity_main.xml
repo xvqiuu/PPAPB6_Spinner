@@ -54,7 +54,7 @@
         android:layout_height="40dp"
         android:hint="Keterangan"
         android:background="@drawable/border"
-        android:padding="5dp"
+        android:padding="10dp"
         android:layout_marginTop="15dp"
         />
 
@@ -63,7 +63,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:textStyle="bold"
         android:textSize="20dp"
         android:layout_marginTop="15dp"
         />
