@@ -21,9 +21,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var presence: Array<String>
-    private lateinit var selectedDate :String
-    private lateinit var selectedTime :String
-
+    private var selectedDate : String = ""
+    private var selectedTime : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         presence = getResources().getStringArray(R.array.presence);
 
         with(binding) {
-            //membuat adapter
+            //membuat adapter untuk menghubungkan array dengan tampilan yang akan ditampilkan
             val adapterPresence = ArrayAdapter(
                 this@MainActivity,
                 android.R.layout.simple_spinner_item,
@@ -58,14 +57,17 @@ class MainActivity : AppCompatActivity() {
 
                         val selectedItem = spinnerPresence.selectedItem.toString()
                         if (selectedItem == "Sakit") {
-                            // Tampilkan EditText jika item tertentu dipilih
+                            //Tampilkan EditText jika item tertentu dipilih
+                            //Mengontrol apakah sebuah View (tampilan) akan terlihat atau tersembunyi di layar
                             editTxtKet.visibility = View.VISIBLE
-                        } else if (selectedItem == "Terlambat") {
+                        }
+                        else if (selectedItem == "Terlambat") {
                             editTxtKet.visibility = View.VISIBLE
-                        } else if (selectedItem == "Izin") {
+                        }
+                        else if (selectedItem == "Izin") {
                             editTxtKet.visibility = View.VISIBLE
-                        } else {
-                            // Sembunyikan EditText jika item selainnya dipilih
+                        }
+                        else {
                             editTxtKet.visibility = View.GONE
                         }
                     }
@@ -80,18 +82,18 @@ class MainActivity : AppCompatActivity() {
                 datePicker.month,
                 datePicker.dayOfMonth
             ) {_, year, monthOfYear, dayOfMonth ->
-                val selectedDate = "$dayOfMonth/${monthOfYear +1}/$year"
+                selectedDate = "$dayOfMonth/${monthOfYear +1}/$year"
                 Toast.makeText(this@MainActivity, selectedDate, Toast.LENGTH_SHORT).show()
             }
 
             timePicker.setOnTimeChangedListener{view, hourOfDay, minute ->
-                var selectedTime = String.format("%02d:%02d", hourOfDay, minute)
+                selectedTime = String.format("%02d:%02d", hourOfDay, minute)
 
                 Toast.makeText(this@MainActivity, selectedTime, Toast.LENGTH_SHORT).show()
             }
 
             btnSubmit.setOnClickListener {
-                val selectedDateTime = "$selectedDate jam $selectedTime"
+                var selectedDateTime = "$selectedDate jam $selectedTime"
                 Toast.makeText(
                     this@MainActivity,
                     "Presensi berhasil pada $selectedDateTime",

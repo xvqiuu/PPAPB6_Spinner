@@ -3,7 +3,7 @@
 
     //membuat array string yg didefinisikan di kode sehingga tdk dpt dirubah scr dinamis
     <array name="presence">
-        <item>Hadir Tepat Wktu</item>
+        <item>Hadir Tepat Waktu</item>
         <item>Sakit</item>
         <item>Terlambat</item>
         <item>Izin</item>
